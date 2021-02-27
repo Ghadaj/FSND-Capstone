@@ -49,7 +49,7 @@ class Movies(db.Model):
     return {
       'id': self.id,
       'title': self.title,
-      'release_date': self.release_date,
+      'release_date': self.release_date
     }
 
 '''
@@ -70,7 +70,7 @@ class Actors(db.Model):
   def format(self):
     return {
       'id': self.id,
-      'name': self.name
-      'age': self.age
+      'name': self.name,
+      'age': self.age,
       'gender': self.gender
     }

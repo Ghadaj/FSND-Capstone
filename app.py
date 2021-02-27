@@ -4,7 +4,7 @@ from sqlalchemy import exc
 import json
 from flask_cors import CORS
 
-from .models import  setup_db, Movies, Actors
+from models import setup_db, Movies, Actors
 #from .auth.auth import AuthError, requires_auth
 
 app = Flask(__name__)
@@ -30,7 +30,7 @@ def get_movies():
 def create_new_movie(jwt):
     data = request.get_json()
     newMovie = Movie(title=data.get('title', ''),
-                     release_Date=data.get('releas_date', '')))
+                     release_Date=data.get('releas_date', ''))
 
     try:
         Movies.insert(newMovie)
@@ -71,7 +71,7 @@ def patch_movies(jwt, movie_id):
     if request.json.get('title', '') != '':
         movie.title = request.json.get('title', '')
 
-      if request.json.get('release_date', '') != '':
+    if request.json.get('release_date', '') != '':
         movie.title = request.json.get('release_date', '')
 
     return jsonify({'success': True, 'movies': [movie.format()]})
