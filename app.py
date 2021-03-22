@@ -5,7 +5,7 @@ import json
 from flask_cors import CORS
 
 from models import setup_db, Movies, Actors
-#from .auth.auth import AuthError, requires_auth
+from auth import AuthError, requires_auth
 
 app = Flask(__name__)
 setup_db(app)
@@ -15,18 +15,23 @@ CORS(app)
 
 ## ROUTES
 ##Movies
+
 @app.route('/movies', methods=['GET'])
 @requires_auth('get:movies')
-def get_movies():
+def get_movies(jwt):
+    print("Get Movies:before try")
     try:
-       movies = [Movies.query.all()]
-       return jsonify({'success': True, 'movies': movies.format()})
+       print("Get Movies:Try:Start")
+       movies = Movies.query.all()
+
+       print(movies)
+       return jsonify({'success': True, 'movies': [movie.format() for movie in movies ]})
     except:
         abort(500)
 
 
 @app.route('/movies', methods=['POST'])
-#@requires_auth('post:movies')
+@requires_auth('post:movies')
 def create_new_movie(jwt):
     data = request.get_json()
     newMovie = Movie(title=data.get('title', ''),
@@ -40,7 +45,7 @@ def create_new_movie(jwt):
         abort(401)
 
 @app.route('/movies/<int:movie_id>', methods=['DELETE'])
-#@requires_auth('delete:movies')
+@requires_auth('delete:movies')
 def delete_movie(jwt, movie_id):
     movie = Movie.query.filter_by(id=movie_id).one_or_none()
 
@@ -59,7 +64,7 @@ def delete_movie(jwt, movie_id):
 
 
 @app.route('/movies/<int:movie_id>', methods=['PATCH'])
-#@requires_auth('patch:movies')
+@requires_auth('patch:movies')
 def patch_movies(jwt, movie_id):
     movie = Movies.query.filter_by(id=movie_id).one_or_none()
     if movie is None:
@@ -79,17 +84,17 @@ def patch_movies(jwt, movie_id):
 
 ##Actors
 @app.route('/actors', methods=['GET'])
-#@requires_auth('get:actors')
-def get_actors():
+@requires_auth('get:actors')
+def get_actors(jwt):
     try:
-       actors = [Actors.query.all()]
-       return jsonify({'success': True, 'actors': actors.format()})
+       actors = Actors.query.all()
+       return jsonify({'success': True, 'actors': [actor.format() for actor in actors]})
     except:
         abort(500)
 
         
 @app.route('/actors', methods=['POST'])
-#@requires_auth('post:actors')
+@requires_auth('post:actors')
 def create_new_actor(jwt):
     data = request.get_json()
     newActor = Actor(name=data.get('name', ''),
@@ -104,7 +109,7 @@ def create_new_actor(jwt):
         abort(401)
 
 @app.route('/actors/<int:actor_id>', methods=['DELETE'])
-#@requires_auth('delete:actors')
+@requires_auth('delete:actors')
 def delete_actor(jwt, actor_id):
     actor = actor.query.filter_by(id=actor_id).one_or_none()
 
@@ -123,7 +128,7 @@ def delete_actor(jwt, actor_id):
 
 
 @app.route('/actors/<int:actor_id>', methods=['PATCH'])
-#@requires_auth('patch:actors')
+@requires_auth('patch:actors')
 def patch_actors(jwt, actor_id):
     actor = actors.query.filter_by(id=actor_id).one_or_none()
     if actor is None:
