@@ -26,12 +26,12 @@ class Movies(db.Model):
   __tablename__ = 'movies'
 
   id = Column(db.Integer, primary_key=True)
-  title = Column(db.String)
-  release_date = Column(db.String)
+  title = Column(String)
+  release_date = Column(String)
 
   def __init__(self, title, release_date):
-    self.titel = title
-    self.release_date = releas_date
+    self.title = title
+    self.release_date = release_date
 
 
   def insert(self):
