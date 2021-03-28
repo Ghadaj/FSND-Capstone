@@ -7,9 +7,11 @@ from flask_cors import CORS
 from models import setup_db, Movies, Actors
 from auth import AuthError, requires_auth
 
-  
+
+ 
 
 def create_app(test_config=None):
+
   # create and configure the app
     app = Flask(__name__)
     setup_db(app)
@@ -204,3 +206,9 @@ def create_app(test_config=None):
                 'message': error.error.get('description', 'unknown error'
                 )}), error.status_code)
     return app
+
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run()
