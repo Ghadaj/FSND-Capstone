@@ -41,12 +41,12 @@ Please replace ASSISTANT_TOKEN, DIRECTOR_TOKEN, and PRODUCER_TOKEN in setup with
 To get the access tokens Please visit https://cs-fsnd.us.auth0.com/authorize?audience=castingAgency&response_type=token&client_id=RNBSVZ42ii0OKMlOaRYSPaX9LboZoV0F&redirect_uri=https://localhost:8080/resultand sign in with login-credentials provided in the setup.sh, after you successfully signed in extract the access_token from the routed page and insert it in setup.sh file
 
 
-##Installing Dependencies
+## Installing Dependencies
 Python
 Follow instructions to install the correct version of Python for your platform
 in the python docs.
 
-##Virtual Environment (venv)
+## Virtual Environment (venv)
 We recommend working within a virtual environment whenever using Python for
 projects. This keeps your dependencies for each project separate and organaized.
 Instructions for setting up a virual enviornment for your platform can be found
@@ -58,7 +58,7 @@ venv/bin/activate
 
 ```
 
-##PIP Dependecies
+## PIP Dependecies
 Once you have your venv setup and running, install dependencies by navigating
 to the root directory and running:
 
@@ -69,7 +69,7 @@ to the root directory and running:
 This will install all of the required packages included in the requirements.txt
 file.
 
-##Local Database Setup
+## Local Database Setup
 
 Create database and publish it with dummy data by running the below command
 
@@ -80,7 +80,7 @@ psql agency < agency.psql
 ```
 
 
-##Local Testing
+## Local Testing
 To test your local installation, run the following command from the root folder:
 
 ```
@@ -90,7 +90,7 @@ python test_app.py
 
 If all tests pass, your local installation is set up correctly.
 
-##Running the server
+## Running the server
 From within the root directory, first ensure you're working with your created
 venv. To run the server, execute the following:
 
