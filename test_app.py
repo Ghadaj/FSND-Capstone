@@ -77,7 +77,8 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'Permission not found.')
 
     def test_post_actor_not_authorized(self):
-        res = self.client().post('/actors', headers=self.assistant, json=self.new_actor)
+        res = self.client().post('/actors',
+                                 headers=self.assistant, json=self.new_actor)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 401)
         self.assertEqual(data['success'], False)
@@ -91,7 +92,9 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'Permission not found.')
 
     def test_patch_actor_not_authorized(self):
-        res = self.client().patch('/actors/1', headers=self.assistant, json=self.update_actor)
+        res = self.client().patch('/actors/1',
+                                  headers=self.assistant,
+                                  json=self.update_actor)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 401)
         self.assertEqual(data['success'], False)
@@ -100,14 +103,16 @@ class AgencyTestCase(unittest.TestCase):
         # Test Director
 
     def test_post_actor(self):
-        res = self.client().post('/actors', headers=self.director, json=self.new_actor)
+        res = self.client().post('/actors',
+                                 headers=self.director, json=self.new_actor)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertTrue(data['actors'])
 
     def test_post_movie_not_authorized(self):
-        res = self.client().post('/movies', headers=self.director, json=self.new_movie)
+        res = self.client().post('/movies',
+                                 headers=self.director, json=self.new_movie)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 401)
         self.assertEqual(data['success'], False)
@@ -115,14 +120,17 @@ class AgencyTestCase(unittest.TestCase):
 
     # TEST Producer
     def test_patch_movie(self):
-        res = self.client().patch('/movies/1', headers=self.producer, json=self.update_movie)
+        res = self.client().patch('/movies/1',
+                                  headers=self.producer,
+                                  json=self.update_movie)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertTrue(data['movies'])
 
     def test_delete_movie(self):
-        res = self.client().delete('/movies/2', headers=self.producer)
+        res = self.client().delete('/movies/2',
+                                   headers=self.producer)
         data = json.loads(res.data)
         movie = Movies.query.get(2)
         self.assertEqual(res.status_code, 200)
@@ -131,7 +139,8 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(movie, None)
 
     def test_delete_actor(self):
-        res = self.client().delete('/actors/2', headers=self.producer)
+        res = self.client().delete('/actors/2',
+                                   headers=self.producer)
         data = json.loads(res.data)
         actor = Actors.query.get(2)
         self.assertEqual(res.status_code, 200)
@@ -140,14 +149,17 @@ class AgencyTestCase(unittest.TestCase):
         self.assertEqual(actor, None)
 
     def test_post_movie(self):
-        res = self.client().post('/movies', headers=self.producer, json=self.new_movie)
+        res = self.client().post('/movies',
+                                 headers=self.producer, json=self.new_movie)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertTrue(data['movies'])
 
-    def test_patch_movie_resource_not_found(self):
-        res = self.client().patch('/movies/100', headers=self.producer, json=self.update_movie)
+    def test_patch_movie_resourc_not_found(self):
+        res = self.client().patch('/movies/100',
+                                  headers=self.producer,
+                                  json=self.update_movie)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data['success'], False)

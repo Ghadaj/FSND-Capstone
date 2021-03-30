@@ -31,7 +31,8 @@ def get_token_auth_header():
     parts = auth.split()
     if parts[0].lower() != 'bearer':
         raise AuthError({'code': 'invalid_header',
-                         'description': 'Authorization header must start with "Bearer".'
+                         'description':
+                         'Authorization header must start with "Bearer".'
                          }, 401)
     elif len(parts) == 1:
 
@@ -40,7 +41,8 @@ def get_token_auth_header():
     elif len(parts) > 2:
 
         raise AuthError({'code': 'invalid_header',
-                         'description': 'Authorization header must be bearer token.'
+                         'description':
+                         'Authorization header must be bearer token.'
                          }, 401)
 
     token = parts[1]
@@ -92,11 +94,13 @@ def verify_decode_jwt(token):
         except jwt.JWTClaimsError:
 
             raise AuthError({'code': 'invalid_claims',
-                             'description': 'Incorrect claims. Please, check the audience and issuer.'
+                             'description':
+                             'Incorrect claim. Check the audience and issuer.'
                              }, 401)
         except Exception:
             raise AuthError({'code': 'invalid_header',
-                             'description': 'Unable to parse authentication token.'
+                             'description':
+                             'Unable to parse authentication token.'
                              }, 400)
     raise AuthError({'code': 'invalid_header',
                      'description': 'Unable to find the appropriate key.'

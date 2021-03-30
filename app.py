@@ -10,7 +10,7 @@ from auth import AuthError, requires_auth
 
 def create_app(test_config=None):
 
-  # create and configure the app
+    # create and configure the app
     app = Flask(__name__)
     setup_db(app)
     CORS(app)
@@ -35,8 +35,9 @@ def create_app(test_config=None):
     def get_movies(jwt):
         try:
             movies = Movies.query.all()
-            return jsonify({'success': True, 'movies': [movie.format() for movie in movies]})
-        except:
+            return jsonify({'success': True,
+                            'movies': [movie.format() for movie in movies]})
+        except Exception as e:
             abort(500)
 
     @app.route('/movies', methods=['POST'])
@@ -51,8 +52,8 @@ def create_app(test_config=None):
             release_date = data.get('release_date')
             newMovie = Movies(title=title, release_date=release_date)
             newMovie.insert()
-
-            return jsonify({'success': True, 'movies': [newMovie.format()]}), 200
+            return jsonify({'success': True,
+                            'movies': [newMovie.format()]}), 200
 
         except Exception as e:
 
@@ -65,7 +66,8 @@ def create_app(test_config=None):
 
         if movie is None:
             return (jsonify({'success': False, 'error': 404,
-                             'message': 'Movie #{} not found.'.format(movie_id)}),
+                             'message': 'Movie #{} not found.'.
+                             format(movie_id)}),
                     404)
         try:
             movie.delete()
@@ -82,7 +84,8 @@ def create_app(test_config=None):
         if movie is None:
             # Movie with ID is not found
             return (jsonify({'success': False, 'error': 404,
-                             'message': 'Movie #{} not found.'.format(movie_id)}),
+                             'message': 'Movie #{} not found.'.
+                             format(movie_id)}),
                     404)
         data = request.get_json()
         if data.get('title', '') != '':
@@ -100,8 +103,10 @@ def create_app(test_config=None):
     def get_actors(jwt):
         try:
             actors = Actors.query.all()
-            return jsonify({'success': True, 'actors': [actor.format() for actor in actors]})
-        except:
+            return jsonify({'success': True, 'actors': [
+                            actor.format() for actor in actors]})
+
+        except Exception as e:
             abort(500)
 
     @app.route('/actors', methods=['POST'])
@@ -119,9 +124,10 @@ def create_app(test_config=None):
                               gender=data.get('gender', ''))
 
             newActor.insert()
-            return jsonify({'success': True, 'actors': [newActor.format()]}), 200
+            return jsonify({'success': True,
+                            'actors': [newActor.format()]}), 200
 
-        except:
+        except Exception as e:
             abort(500)
 
     @app.route('/actors/<int:actor_id>', methods=['DELETE'])
@@ -131,7 +137,8 @@ def create_app(test_config=None):
 
         if actor is None:
             return (jsonify({'success': False, 'error': 404,
-                             'message': 'Actor #{} not found.'.format(actor_id)}),
+                             'message': 'Actor #{} not found.'.
+                             format(actor_id)}),
                     404)
         try:
             actor.delete()
@@ -149,7 +156,8 @@ def create_app(test_config=None):
         if actor is None:
             # actor with ID is not found
             return (jsonify({'success': False, 'error': 404,
-                             'message': 'Actor #{} not found.'.format(actor_id)}),
+                             'message': 'Actor #{} not found.'.
+                             format(actor_id)}),
                     404)
 
         data = request.get_json()
@@ -164,7 +172,7 @@ def create_app(test_config=None):
             actor.update()
 
             return jsonify({'success': True, 'actors': [actor.format()]})
-        except:
+        except Exception as e:
             abort(500)
 
     # Error Handling
@@ -192,8 +200,8 @@ def create_app(test_config=None):
     @app.errorhandler(AuthError)
     def auth_error(error):
         return (jsonify({'success': False, 'error': error.status_code,
-                         'message': error.error.get('description', 'unknown error'
-                                                    )}), error.status_code)
+                         'message': error.error.get
+                         ('description', 'unknown error')}), error.status_code)
     return app
 
 
