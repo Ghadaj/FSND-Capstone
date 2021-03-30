@@ -1,7 +1,7 @@
 # Casting Agency
 
 ## Introduction
-This is the capstone project for Udacity FSND.
+This is the capstone project for Udacity FSND, the aim of this project is to showcase the skills and knowledge gained throughout the course. In this project I created flask app with API endpoints to interact with the CastingAgency DB, for example to get the list of actors in the agency, or to remove an actor. The application is hosted live on Heroku and uses Auth0 for authentication.
 
 ## Getting Started
 ### Heroku URL
@@ -35,6 +35,9 @@ Auth0 tokens used for the authentication. There are 3 roles for the casting agen
 
 ## Test
 You can test the app by running the test_app.py or using Postman collection.
+Please replace ASSISTANT_TOKEN, DIRECTOR_TOKEN, and PRODUCER_TOKEN in setup with access tokens before you run th test_app.py
+
+To get the access tokens Please visit https://cs-fsnd.us.auth0.com/authorize?audience=castingAgency&response_type=token&client_id=RNBSVZ42ii0OKMlOaRYSPaX9LboZoV0F&redirect_uri=https://localhost:8080/resultand sign in with login-credentials provided in the setup.sh, after you successfully signed in extract the access_token from the routed page and insert it in setup.sh file
 
 ## Resource Endpoint 
 ### GET '/movies'
