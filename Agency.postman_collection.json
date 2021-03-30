@@ -1,27 +1,73 @@
 {
 	"info": {
-		"_postman_id": "5fbce420-8287-4736-87a9-a910656bb026",
-		"name": "udacity-fsnd-udaspicelatte",
+		"_postman_id": "9fb5d3e3-274a-41c2-babf-b32d095788c5",
+		"name": "Agency",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "public",
+			"name": "Assistant",
 			"item": [
 				{
-					"name": "/drinks",
+					"name": "movies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"value contains drinks array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -32,56 +78,29 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks",
+							"raw": "https://mycastingagency.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks"
+								"actors"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks-detail",
+					"name": "movies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/drinks-detail",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"drinks-detail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/drinks",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -91,27 +110,71 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My Movie\",\r\n    \"releas_date\": \"2021-09-22\"\r\n    \r\n}"
+						},
 						"url": {
-							"raw": "{{host}}/drinks",
+							"raw": "https://mycastingagency.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks"
+								"movies"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks/1",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Actor\",\r\n    \"age\": \"45\",\r\n    \"gender\": \"Female\"\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -121,13 +184,20 @@
 					"request": {
 						"method": "PATCH",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"title\": \"My Movie\",\r\n    \"releas_date\": \"2021-09-22\"\r\n    \r\n}"
+						},
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "https://mycastingagency.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks",
+								"movies",
 								"1"
 							]
 						}
@@ -135,14 +205,52 @@
 					"response": []
 				},
 				{
-					"name": "/drinks/1",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Actor\",\r\n    \"age\": \"45\",\r\n    \"gender\": \"Female\"\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -153,37 +261,104 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "https://mycastingagency.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks",
-								"1"
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
 							]
 						}
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZaXzB1Mzk5S0UzZTRGdG9wUG5fViJ9.eyJpc3MiOiJodHRwczovL2NzLWZzbmQudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwM2E1OTYyOTlkYmViMDA2OGI2NWZmNCIsImF1ZCI6ImNhc3RpbmdBZ2VuY3kiLCJpYXQiOjE2MTcwNDkxNjAsImV4cCI6MTYxNzA1NjM2MCwiYXpwIjoiUk5CU1ZaNDJpaTBPS01sT2FSWVNQYVg5TGJvWm9WMEYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIl19.KtDzSgc-u97Y8Gnfbiggx8jFsfTmCHULmlk_DeoVLP1AhdVumIk2g-03KsOv3UkL7UJ_LHeofCwNyl7aZiUC_Ja5Ej_CD0iPAgEL1sScHjRmvfa_BdCf3-f-RP8F2OyS88aKfBuLOcG2dWKlT3LOpXqzXJw0x1jFNU3E0qg3ZigI-nZJlDJrsDgoP1aHvqflXVCpK-IEtWFJ2j5ddgAgMOv8cV4xZpth09vjHwX_JbJ_2MTdiYwfVKhQ8Jvua7_M19qB_NP-VrYNZ_l5ew1xiQmlpufZe065QtBqYhJjVYlgnN5oCwxlwuY7IIZmWJeaYFWIhdOamJFgNMx4c1wHiA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
-			"name": "barista",
+			"name": "Producer",
 			"item": [
 				{
-					"name": "/drinks",
+					"name": "movies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"value contains drinks array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -194,26 +369,34 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks",
+							"raw": "https://mycastingagency.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks"
+								"movies"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks-detail",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -224,26 +407,29 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks-detail",
+							"raw": "https://mycastingagency.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks-detail"
+								"actors"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks",
+					"name": "movies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -251,39 +437,83 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZaXzB1Mzk5S0UzZTRGdG9wUG5fViJ9.eyJpc3MiOiJodHRwczovL2NzLWZzbmQudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwMTU0ZTQyNTE4NTNiMDA2YTAxOGNkNiIsImF1ZCI6IkRyaW5rIiwiaWF0IjoxNjEzMTgwNTM4LCJleHAiOjE2MTMyNjY5MzUsImF6cCI6IkxCck1uS0FqeGZUYWRBVkt1c21HQzJOd3dTcEJSMDNHIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCIsImdldDpkcmlua3MtZGV0YWlscyJdfQ.XjVUUiJ3-SiyaXduqcCWLAUBp-U34DzTVf7NuhSQvQZEC7IEBFcUx-F8s627ol_ya7uHE3jdE7o37fWb4MHJ6JIxhNhapq097fWi76wWgQ0KwZEKDHdlPGTfqkxPRUMqRgijb-tYYatv-V366qmHTDbdxpAeRy4FbVDN85DkMQp5gmERCH-O9_YDFA57IvOuGc8OTdVrc3nd-zTL7QSdVU1nVn2bxigNlNxdIVrOsEDJAonRbmLcNSGDiiF76Sb0c4dWzSKRlVOT-KynruioE4BRyWUs04wjF9LG_m5z3_JECt58y24l2n2SemIoxJz7v13T53zXSf2gD34-Eif6eA",
-									"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My Movie\",\r\n    \"release_date\": \"2021-09-12\"\r\n    \r\n}\r\n\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
-						"method": "POST",
-						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks",
+							"raw": "https://mycastingagency.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks"
+								"movies"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks/1",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Actor\",\r\n    \"age\": \"45\",\r\n    \"gender\": \"Female\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -293,28 +523,83 @@
 					"request": {
 						"method": "PATCH",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"title\": \"My Movie\",\r\n    \"releas_date\": \"2021-09-22\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "https://mycastingagency.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks",
-								"1"
+								"movies",
+								"2"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks/1",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Actor\",\r\n    \"age\": \"45\",\r\n    \"gender\": \"Female\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -325,13 +610,50 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "https://mycastingagency.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks",
-								"1"
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
 							]
 						}
 					},
@@ -343,7 +665,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZaXzB1Mzk5S0UzZTRGdG9wUG5fViJ9.eyJpc3MiOiJodHRwczovL2NzLWZzbmQudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwMTU0ZTQyNTE4NTNiMDA2YTAxOGNkNiIsImF1ZCI6IkRyaW5rIiwiaWF0IjoxNjEzMTgwNTM4LCJleHAiOjE2MTMyNjY5MzUsImF6cCI6IkxCck1uS0FqeGZUYWRBVkt1c21HQzJOd3dTcEJSMDNHIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCIsImdldDpkcmlua3MtZGV0YWlscyJdfQ.XjVUUiJ3-SiyaXduqcCWLAUBp-U34DzTVf7NuhSQvQZEC7IEBFcUx-F8s627ol_ya7uHE3jdE7o37fWb4MHJ6JIxhNhapq097fWi76wWgQ0KwZEKDHdlPGTfqkxPRUMqRgijb-tYYatv-V366qmHTDbdxpAeRy4FbVDN85DkMQp5gmERCH-O9_YDFA57IvOuGc8OTdVrc3nd-zTL7QSdVU1nVn2bxigNlNxdIVrOsEDJAonRbmLcNSGDiiF76Sb0c4dWzSKRlVOT-KynruioE4BRyWUs04wjF9LG_m5z3_JECt58y24l2n2SemIoxJz7v13T53zXSf2gD34-Eif6eA",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZaXzB1Mzk5S0UzZTRGdG9wUG5fViJ9.eyJpc3MiOiJodHRwczovL2NzLWZzbmQudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwM2E1OWNiYjhjZGY2MDA3MDg4MDE0NyIsImF1ZCI6ImNhc3RpbmdBZ2VuY3kiLCJpYXQiOjE2MTcwNDM3ODUsImV4cCI6MTYxNzA1MDk4NSwiYXpwIjoiUk5CU1ZaNDJpaTBPS01sT2FSWVNQYVg5TGJvWm9WMEYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.KPEkfRCqfKTpaHfRr998-MakQGBYvmWa4gCethfc3SY1YTdTob9tvrT3Z1EcouCOBGEqBfWduRftU7dSPqBvVAU8XIBFuxzpOO-xYwhVMn7_v9Xk_caUz4FLTm3GQW2mGa7IU709CmgpU1wbHP_xEe_wxs7q9h3H8i9jtA2llseNpcrs8FxA6FnOLWl5Pv5NzSFI41hQz3lpxH_VZYr_SxhDiOZaj9L8zN9HJgpXihbrU20lpdx4m3uma1r2QCVJ3QA2tz7ukd-Z2iB2eC9nC-PBXjnl6Axqr91BcH7D-p_BTM9ZrRUhFqhtZhhsa-wo_f2lKSLy6RCAr8MRsOT5VA",
 						"type": "string"
 					}
 				]
@@ -370,22 +692,56 @@
 			]
 		},
 		{
-			"name": "manager",
+			"name": "Director",
 			"item": [
 				{
-					"name": "/drinks",
+					"name": "movies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"value contains drinks array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -396,61 +752,29 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks",
+							"raw": "https://mycastingagency.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks"
+								"actors"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks-detail",
+					"name": "movies",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"value contains drinks array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.drinks).to.be.an('array')",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/drinks-detail",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"drinks-detail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/drinks",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -459,44 +783,82 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Water3\",\n    \"recipe\": {\n        \"id\": \"water\",\n        \"color\": \"blue\",\n        \"parts\": 1\n    }\n}"
+							"raw": "{\r\n    \"title\": \"My Movie\",\r\n    \"releas_date\": \"2021-09-22\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{host}}/drinks",
+							"raw": "https://mycastingagency.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks"
+								"movies"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks/1",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"value contains drinks array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Actor\",\r\n    \"age\": \"45\",\r\n    \"gender\": \"Female\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -505,40 +867,84 @@
 					],
 					"request": {
 						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Water5\"\n}"
+							"raw": "{   \r\n    \"title\": \"My Movie\",\r\n    \"release_date\": \"2021-09-22\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "https://mycastingagency.herokuapp.com/movies/3",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks",
-								"1"
+								"movies",
+								"3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/drinks/1",
+					"name": "actors",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Actor\",\r\n    \"age\": \"45\",\r\n    \"gender\": \"Female\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors/3",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -549,12 +955,49 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/drinks/1",
+							"raw": "https://mycastingagency.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"mycastingagency",
+								"herokuapp",
+								"com"
 							],
 							"path": [
-								"drinks",
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://mycastingagency.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"mycastingagency",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
 								"1"
 							]
 						}
@@ -567,7 +1010,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZaXzB1Mzk5S0UzZTRGdG9wUG5fViJ9.eyJpc3MiOiJodHRwczovL2NzLWZzbmQudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwMTU0ZTk1OWRiZDFhMDA2OGYwOThmMiIsImF1ZCI6IkRyaW5rIiwiaWF0IjoxNjEzMTgwNjI1LCJleHAiOjE2MTMyNjcwMjIsImF6cCI6IkxCck1uS0FqeGZUYWRBVkt1c21HQzJOd3dTcEJSMDNHIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJnZXQ6ZHJpbmtzLWRldGFpbHMiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.kS7WJbke4SPiTob__W_G8J2-pl4WEApLT48MFlEiFkKH2xUIm_a_Yz0yU0kIu0vb2n6BVC_TXr-rMvJbnQuFWJgs2BsVuA7uN6X81bVZNFKqorm9eYOuVSBK2aiAL_JYLReBQ0GdWO0HkzKjxbRLhTj6DqsHU3Q1QfVrIWkUNRkL3a1Jr6jj-hzjY7rEPmdMPgkiybUuNaitT9gVkjfY8IqCaJp0HeQ6CUDvlSMFAHL61zyFGzZeepORXgK1hLmb68vDoEQBroGjpuMFS6tybbg21p59pbfiU_1PXYMju7FhQ1N6VpS9g8VRsgPBawrxXgpm-csR4SpMBLTjCwGSPQ",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZaXzB1Mzk5S0UzZTRGdG9wUG5fViJ9.eyJpc3MiOiJodHRwczovL2NzLWZzbmQudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwM2E1OWExNTY5MjQzMDA3MGMwOTAwYSIsImF1ZCI6ImNhc3RpbmdBZ2VuY3kiLCJpYXQiOjE2MTcwNDk3MTMsImV4cCI6MTYxNzA1NjkxMywiYXpwIjoiUk5CU1ZaNDJpaTBPS01sT2FSWVNQYVg5TGJvWm9WMEYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIl19.DJMpn-8WGtPviK5DWEOsbs4uc_cVCsmWH6AKbp47ZiU4t7tHx4VP7m3Im6lFHDQ--DAQdULgrOQBb3BrbpSOTeNmFPj8-Rz3nMaTf7Ci4O-niMXl7jQb7P2HIOAZspSE48opuaaJkPxthCZTPUcEFf5jYBiHoiGky5JEOA7sEKaCoHWynFggEoDtR5XSuShpCgepfi9RCdRdmDiKPQ79cY7yotFZutaj58W8wU_ecblUp2gVx1VpCCAZJAw62PJJOEV1gvuc15a_wtA_LJdX0eGcF1jOOGdVwf7-xxsxRKjvavO5LNUp0vABVUzXo71Hu2NHuJ5VEXgkLuGf93WFqg",
 						"type": "string"
 					}
 				]
@@ -592,33 +1035,6 @@
 					}
 				}
 			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "host",
-			"value": "localhost:5000",
-			"type": "string"
 		}
 	]
 }
