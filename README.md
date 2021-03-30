@@ -6,7 +6,8 @@ This is the capstone project for Udacity FSND, the aim of this project is to sho
 ## Getting Started
 ### Heroku URL
 https://mycastingagency.herokuapp.com
-
+### Local URL
+http://127.0.0.1:5000/
 
 ### Authentication: 
 Auth0 tokens used for the authentication. There are 3 roles for the casting agency:
@@ -38,6 +39,78 @@ You can test the app by running the test_app.py or using Postman collection.
 Please replace ASSISTANT_TOKEN, DIRECTOR_TOKEN, and PRODUCER_TOKEN in setup with access tokens before you run th test_app.py
 
 To get the access tokens Please visit https://cs-fsnd.us.auth0.com/authorize?audience=castingAgency&response_type=token&client_id=RNBSVZ42ii0OKMlOaRYSPaX9LboZoV0F&redirect_uri=https://localhost:8080/resultand sign in with login-credentials provided in the setup.sh, after you successfully signed in extract the access_token from the routed page and insert it in setup.sh file
+
+
+##Installing Dependencies
+Python
+Follow instructions to install the correct version of Python for your platform
+in the python docs.
+
+##Virtual Environment (venv)
+We recommend working within a virtual environment whenever using Python for
+projects. This keeps your dependencies for each project separate and organaized.
+Instructions for setting up a virual enviornment for your platform can be found
+in the python docs.
+
+```
+python -m venv venv
+venv/bin/activate
+
+```
+
+##PIP Dependecies
+Once you have your venv setup and running, install dependencies by navigating
+to the root directory and running:
+
+```
+ pip install -r requirements.txt
+
+```
+This will install all of the required packages included in the requirements.txt
+file.
+
+##Local Database Setup
+
+Create database and publish it with dummy data by running the below command
+
+```
+createdb agency
+psql agency < agency.psql
+
+```
+
+
+##Local Testing
+To test your local installation, run the following command from the root folder:
+
+```
+python test_app.py
+
+```
+
+If all tests pass, your local installation is set up correctly.
+
+##Running the server
+From within the root directory, first ensure you're working with your created
+venv. To run the server, execute the following:
+
+```
+export FLASK_APP=agency
+export FLASK_DEBUG=true
+export FLASK_ENV=development
+flask run
+
+```
+
+Setting the FLASK_ENV variable to development will detect file changes and
+restart the server automatically.
+Setting the FLASK_APP variable to agency directs Flask to use
+the agency directory and the __init__.py file to find and load the
+application.
+
+
+
+
 
 ## Resource Endpoint 
 ### GET '/movies'
