@@ -26,7 +26,7 @@ def create_app(test_config=None):
     @app.route('/')
     def index():
         return jsonify({'message': 'Welcome to My Casting Agency'}
-                       ),200
+                       ), 200
     # ROUTES
     # Movies
 
@@ -169,7 +169,6 @@ def create_app(test_config=None):
 
     # Error Handling
 
- 
     @app.errorhandler(422)
     def unprocessable(error):
         return (jsonify({'success': False, 'error': 422,
